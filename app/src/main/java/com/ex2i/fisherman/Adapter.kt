@@ -29,6 +29,10 @@ class Adapter(
                 tvName.text = item.name
                 ivFish.setImageResource(item.image)
 
+                holder.itemView.setOnClickListener {
+                    mCallback?.itemOnClick(item.name,item.image)
+                }
+
             }
         }
 
