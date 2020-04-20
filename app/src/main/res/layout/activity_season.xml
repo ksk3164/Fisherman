@@ -23,7 +23,7 @@
             android:gravity="center_vertical"
             android:padding="16dp"
             android:paddingStart="24dp"
-            android:text="검색"
+            android:text="FISHERMAN"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -33,6 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/iv_search"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_margin="16dp"
@@ -144,7 +145,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="호우"
+                android:text="없다"
                 android:textColor="@color/pupple" />
         </LinearLayout>
 

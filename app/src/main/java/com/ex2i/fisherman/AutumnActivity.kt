@@ -29,9 +29,9 @@ class AutumnActivity : AppCompatActivity(), OnItemClick {
         )
 
         val eastSeaItem: MutableList<RequestData> = mutableListOf(
-            RequestData("가자미", R.drawable.item_gaksigajami),
+            RequestData("각시가자미", R.drawable.item_gaksigajami),
             RequestData("황어", R.drawable.item_hwanga),
-            RequestData("우럭", R.drawable.item_jopibolak),
+            RequestData("조피볼락", R.drawable.item_jopibolak),
             RequestData("붕장어", R.drawable.item_bungjanga),
             RequestData("부시리", R.drawable.item_busiri),
             RequestData("연어병치", R.drawable.item_yeonabyuongchi),
@@ -57,7 +57,7 @@ class AutumnActivity : AppCompatActivity(), OnItemClick {
         )
 
         val westSeaItem: MutableList<RequestData> = mutableListOf(
-            RequestData("우럭", R.drawable.item_jopibolak),
+            RequestData("조피볼락", R.drawable.item_jopibolak),
             RequestData("숭어", R.drawable.item_sunga),
             RequestData("전어", R.drawable.item_jeona),
             RequestData("삼치", R.drawable.item_samchi),

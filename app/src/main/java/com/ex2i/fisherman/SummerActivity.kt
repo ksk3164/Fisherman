@@ -27,9 +27,9 @@ class SummerActivity : AppCompatActivity(), OnItemClick {
         )
 
         val eastSeaItem: MutableList<RequestData> = mutableListOf(
-            RequestData("가자미", R.drawable.item_gaksigajami),
+            RequestData("각시가자미", R.drawable.item_gaksigajami),
             RequestData("황어", R.drawable.item_hwanga),
-            RequestData("우럭", R.drawable.item_jopibolak),
+            RequestData("조피볼락", R.drawable.item_jopibolak),
             RequestData("붕장어", R.drawable.item_bungjanga),
             RequestData("대구횟대", R.drawable.item_daeguhoedae),
             RequestData("보리멸", R.drawable.item_borimyul),
@@ -53,7 +53,7 @@ class SummerActivity : AppCompatActivity(), OnItemClick {
         )
 
         val westSeaItem: MutableList<RequestData> = mutableListOf(
-            RequestData("우럭", R.drawable.item_jopibolak),
+            RequestData("조피볼락", R.drawable.item_jopibolak),
             RequestData("숭어", R.drawable.item_sunga),
             RequestData("쥐노래미", R.drawable.item_geenoraemi),
             RequestData("광어", R.drawable.item_gwanga),

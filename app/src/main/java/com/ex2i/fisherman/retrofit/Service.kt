@@ -15,6 +15,14 @@ interface Service {
         @Query("lon") lon: String?
     ): Call<Model_weather?>?
 
+    @GET("/weather/severe/alert")
+    fun getModel_special(
+        @Query("appkey") appkey: String?,
+        @Query("version") version: String?,
+        @Query("lat") lat: String?,
+        @Query("lon") lon: String?
+    ): Call<Model_weather?>?
+
     @GET("/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty")
     fun getModel_PM(
         @Query("ServiceKey") ServiceKey: String?,

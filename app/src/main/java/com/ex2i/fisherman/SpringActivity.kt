@@ -27,7 +27,7 @@ class SpringActivity : AppCompatActivity(), OnItemClick {
         )
 
         val eastSeaItem: MutableList<RequestData> = mutableListOf(
-            RequestData("가자미", R.drawable.item_gaksigajami),
+            RequestData("각시가자미", R.drawable.item_gaksigajami),
             RequestData("임연수어", R.drawable.item_imyeonsua),
             RequestData("감성돔", R.drawable.item_gamsungdom),
             RequestData("강도다리", R.drawable.item_dodari),
@@ -42,7 +42,7 @@ class SpringActivity : AppCompatActivity(), OnItemClick {
         )
 
         val westSeaItem: MutableList<RequestData> = mutableListOf(
-            RequestData("우럭", R.drawable.item_jopibolak),
+            RequestData("조피볼락", R.drawable.item_jopibolak),
             RequestData("숭어", R.drawable.item_sunga),
             RequestData("쥐노래미", R.drawable.item_geenoraemi),
             RequestData("도다리", R.drawable.item_dodari),

@@ -1,6 +1,7 @@
 package com.ex2i.fisherman
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.RealmResults
@@ -26,12 +27,19 @@ class DetailActivity : AppCompatActivity() {
             .findAll()
 
         tv_size_result.text = result[0]?.size
-        tv_weight_result.text =result[0]?.weight
+        if (result[0]?.weight.equals("")) {
+            view_weight.visibility = View.GONE
+            weight_layout.visibility = View.GONE
+        } else {
+            view_weight.visibility = View.VISIBLE
+            weight_layout.visibility = View.VISIBLE
+            tv_weight_result.text = result[0]?.weight
+        }
         tv_body_color_result.text = result[0]?.bodyColor
-        tv_spawning_season_result.text =result[0]?.spawningSeason
+        tv_spawning_season_result.text = result[0]?.spawningSeason
         tv_habitat_result.text = result[0]?.habitat
-        tv_distribution_area_result.text =result[0]?.distributionArea
-
+        tv_distribution_area_result.text = result[0]?.distributionArea
+        tv_description_result.text = result[0]?.description
 
     }
 

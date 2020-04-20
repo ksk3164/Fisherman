@@ -19,6 +19,69 @@ class Weather {
 
     @SerializedName("hourly")
     var hourlyList : List<Hourly>? = null
+    @SerializedName("alert")
+    var alert : List<Alert>? = null
+}
+
+class Alert {
+    @SerializedName("grid")
+    var grid_special : Grid_Special? = null
+    @SerializedName("alert51")
+    var alert51 : Alert51? = null
+    @SerializedName("alert60")
+    var alert60 : Alert60? = null
+}
+
+class Alert60 {
+    @SerializedName("t1")
+    var t1 : String? = null
+    @SerializedName("t2")
+    var t2 : String? = null
+    @SerializedName("t3")
+    var t3 : String? = null
+    @SerializedName("t4")
+    var t4 : String? = null
+    @SerializedName("t5")
+    var t5 : String? = null
+    @SerializedName("t6")
+    var t6 : String? = null
+    @SerializedName("t7")
+    var t7 : String? = null
+}
+
+class Alert51 {
+    @SerializedName("cmdCode")
+    var cmdCode : String? = null
+    @SerializedName("cmdName")
+    var cmdName : String? = null
+    @SerializedName("varCode")
+    var varCode : String? = null
+    @SerializedName("varName")
+    var varName : String? = null
+    @SerializedName("stressCode")
+    var stressCode : String? = null
+    @SerializedName("stressName")
+    var stressName : String? = null
+}
+
+class Grid_Special {
+    @SerializedName("number")
+    var number : String? = null
+    @SerializedName("timeRelease")
+    var timeRelease : String? = null
+    @SerializedName("stationId")
+    var stationId : String? = null
+    @SerializedName("areaCode")
+    var areaCode : String? = null
+    @SerializedName("areaName")
+    var areaName : String? = null
+    @SerializedName("timeStart")
+    var timeStart : String? = null
+    @SerializedName("timeEnd")
+    var timeEnd : String? = null
+    @SerializedName("timeAllEnd")
+    var timeAllEnd : String? = null
+
 }
 
 class Hourly {
