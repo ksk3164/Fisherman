@@ -51,6 +51,10 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
+        autoCompleteTextView.setOnClickListener {
+            autoCompleteTextView.showDropDown()
+        }
+
         // Set a focus change listener for auto complete text view
         autoCompleteTextView.onFocusChangeListener = View.OnFocusChangeListener{
                 view, b ->

@@ -61,7 +61,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -97,7 +97,7 @@
                 <LinearLayout
                     android:id="@+id/weight_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -131,7 +131,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -152,7 +152,7 @@
                         android:layout_weight="8"
                         android:gravity="center_vertical"
                         android:paddingStart="8dp"
-                        android:text="회갈색, 몸 옆구리 불분명한 검은색 가로무늬가 5~6줄(한국)"
+                        android:text="회갈색, 몸 옆구리 불분명한 검은색 가로무늬가 5~6줄(한국)에서잡히는어종으로어저어저어저어저어저어저어저어저어저어저"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -164,7 +164,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -197,7 +197,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -230,7 +230,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:orientation="horizontal">
 
                     <TextView

@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_spring.*
 
 class SpringActivity : AppCompatActivity(), OnItemClick {
 
     private var resultFishItems: ArrayList<RequestData>? = arrayListOf()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ class SpringActivity : AppCompatActivity(), OnItemClick {
 
         rv_south_sea.adapter =
             Adapter(this, southSeaItem, this)
-        rv_south_sea.layoutManager = GridLayoutManager(this, 3)
+        rv_south_sea.layoutManager = GridLayoutManager(this,3)
 
         rv_east_sea.adapter =
             Adapter(this, eastSeaItem, this)

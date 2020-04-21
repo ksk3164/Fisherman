@@ -31,6 +31,7 @@
                 android:id="@+id/rv_south_sea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -52,6 +53,7 @@
                 android:id="@+id/rv_east_sea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -73,6 +75,7 @@
                 android:id="@+id/rv_jeju_sea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -94,6 +97,7 @@
                 android:id="@+id/rv_west_sea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />

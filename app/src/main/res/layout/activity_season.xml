@@ -175,8 +175,8 @@
 
             <ImageView
                 android:id="@+id/imageButton"
-                android:layout_width="200dp"
-                android:layout_height="130dp"
+                android:layout_width="190dp"
+                android:layout_height="120dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/undraw_spring" />
 
@@ -196,8 +196,8 @@
 
             <ImageView
                 android:id="@+id/imageButton2"
-                android:layout_width="200dp"
-                android:layout_height="130dp"
+                android:layout_width="190dp"
+                android:layout_height="120dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/undraw_summer" />
 
@@ -217,8 +217,8 @@
 
             <ImageView
                 android:id="@+id/imageButton3"
-                android:layout_width="200dp"
-                android:layout_height="130dp"
+                android:layout_width="190dp"
+                android:layout_height="120dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/undraw_fall" />
 
@@ -238,8 +238,8 @@
 
             <ImageView
                 android:id="@+id/imageButton4"
-                android:layout_width="200dp"
-                android:layout_height="130dp"
+                android:layout_width="190dp"
+                android:layout_height="120dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/undraw_winter" />
 
