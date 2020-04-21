@@ -33,8 +33,8 @@ class SplashActivity : AppCompatActivity() {
 
         imageView2.setOnClickListener {
             val intent = Intent(this, SeasonActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
-
         }
 
 
@@ -44,6 +44,11 @@ class SplashActivity : AppCompatActivity() {
             checkRunTimePermission()
         }
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0)
     }
 
     override fun onRequestPermissionsResult(

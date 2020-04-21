@@ -94,6 +94,12 @@ class AutumnActivity : AppCompatActivity(), OnItemClick {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("name",name)
         intent.putExtra("image",image)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0)
     }
 }

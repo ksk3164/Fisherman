@@ -47,6 +47,8 @@ class Alert60 {
     var t6 : String? = null
     @SerializedName("t7")
     var t7 : String? = null
+    @SerializedName("other")
+    var other : String? = null
 }
 
 class Alert51 {

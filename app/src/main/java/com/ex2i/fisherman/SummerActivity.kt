@@ -2,7 +2,6 @@ package com.ex2i.fisherman
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_spring.*
@@ -83,10 +82,16 @@ class SummerActivity : AppCompatActivity(), OnItemClick {
 
     }
 
-    override fun itemOnClick(name: String?, image:Int?) {
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0)
+    }
+
+    override fun itemOnClick(name: String?, image: Int?) {
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("name",name)
-        intent.putExtra("image",image)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        intent.putExtra("name", name)
+        intent.putExtra("image", image)
         startActivity(intent)
     }
 }

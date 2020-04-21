@@ -47,4 +47,9 @@ class DetailActivity : AppCompatActivity() {
         super.onDestroy()
         realm.close()
     }
+
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0)
+    }
 }
