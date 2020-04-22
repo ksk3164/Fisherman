@@ -5,6 +5,8 @@ object Constant {
 
     const val APP_KEY = "c9b1d5f6-3b65-4028-ad83-6c9e55fae406"
 
+    const val SPECIAL_APP_KEY = "l7xx1c5f7430ae7344278a7234f6811069bf"
+
     const val PM_URL_HOST = "http://openapi.airkorea.or.kr"
 
     const val PM_APP_KEY = "LXVBZFLuzpYANjG4U%2FN4IpWM8gaL8EcXF8WNwka73fNh9hnpX9pprTXEhDqYlUyDRg4HID6EVPZK8EmpALJlnA%3D%3D"

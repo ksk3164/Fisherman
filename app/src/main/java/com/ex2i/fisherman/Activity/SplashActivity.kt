@@ -1,4 +1,4 @@
-package com.ex2i.fisherman
+package com.ex2i.fisherman.Activity
 
 import android.Manifest
 import android.app.AlertDialog
@@ -7,16 +7,24 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.ex2i.fisherman.R
+import com.ex2i.fisherman.Util.PreferenceUtil
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
+
+    var handler: Handler? = null       //Handler:Runnable을 실행하는 클래스
+    var runnable: Runnable? = null     //Runnable:병렬 실행이 가능한 Thread를 만들어주는 클래스
+
+    var tutorialTF = false
 
     private val GPS_ENABLE_REQUEST_CODE = 2001
     private val PERMISSIONS_REQUEST_CODE = 100
@@ -28,15 +36,14 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
+        tutorialTF = PreferenceUtil.getInstance(this).getBooleanExtra("tutorial")
         Realm.init(this)
 
         imageView2.setOnClickListener {
-            val intent = Intent(this, SeasonActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
+//            val intent = Intent(this, SeasonActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//            startActivity(intent)
         }
-
 
         if (!checkLocationServicesStatus()) {
             showDialogForLocationServiceSetting()
@@ -67,6 +74,33 @@ class SplashActivity : AppCompatActivity() {
             if (check_result) {
                 //퍼미션 다 허용이면 메인액티비티로
 
+                if (tutorialTF) {
+                    runnable = Runnable {
+                        val intent = Intent(this, SeasonActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+
+                        finish()
+                    }
+
+                    handler = Handler()
+                    handler?.run {
+                        postDelayed(runnable!!, 2000)
+                    }
+                } else {
+                    runnable = Runnable {
+                        val intent = Intent(this, TutorialActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+
+                        finish()
+                    }
+
+                    handler = Handler()
+                    handler?.run {
+                        postDelayed(runnable!!, 2000)
+                    }
+                }
 
             } else {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(
@@ -108,7 +142,33 @@ class SplashActivity : AppCompatActivity() {
             hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED
         ) {
             //퍼미션 물어보고 허용 누르면 ?
+            if (tutorialTF) {
+                runnable = Runnable {
+                    val intent = Intent(this, SeasonActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
 
+                    finish()
+                }
+
+                handler = Handler()
+                handler?.run {
+                    postDelayed(runnable!!, 2000)
+                }
+            } else {
+                runnable = Runnable {
+                    val intent = Intent(this, TutorialActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
+                    finish()
+                }
+
+                handler = Handler()
+                handler?.run {
+                    postDelayed(runnable!!, 2000)
+                }
+            }
 
         } else {
             if (ActivityCompat.shouldShowRequestPermissionRationale(

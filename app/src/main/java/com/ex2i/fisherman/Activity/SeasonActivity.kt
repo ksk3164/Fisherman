@@ -1,4 +1,4 @@
-package com.ex2i.fisherman
+package com.ex2i.fisherman.Activity
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -6,13 +6,14 @@ import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.ex2i.fisherman.*
 import com.ex2i.fisherman.Constant.APP_KEY
 import com.ex2i.fisherman.Constant.PM_APP_KEY
+import com.ex2i.fisherman.Constant.SPECIAL_APP_KEY
 import com.ex2i.fisherman.Util.PreferenceUtil
 import com.ex2i.fisherman.retrofit.*
 import io.realm.Realm
@@ -37,14 +38,14 @@ class SeasonActivity : AppCompatActivity() {
 
     private var gpsTracker: GpsTracker? = null
 
-    private var t1 : String? = null
-    private var t2 : String? = null
-    private var t3 : String? = null
-    private var t4 : String? = null
-    private var t5 : String? = null
-    private var t6 : String? = null
-    private var t7 : String? = null
-    private var other : String? = null
+    private var t1: String? = null
+    private var t2: String? = null
+    private var t3: String? = null
+    private var t4: String? = null
+    private var t5: String? = null
+    private var t6: String? = null
+    private var t7: String? = null
+    private var other: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,13 +125,13 @@ class SeasonActivity : AppCompatActivity() {
         }
 
         tv_severe_result.setOnClickListener {
-            if(!tv_severe_result.text.equals("없음") && !tv_severe_result.text.equals("없다")){
+            if (!tv_severe_result.text.equals("없음") && !tv_severe_result.text.equals("없다")) {
                 AlertDialog.Builder(this)
                     .setTitle("기상특보")
                     .setMessage(
                         "$t1\n" + "$t2\n" + "$t3\n" + "$t4\n" + "$t5\n" + "$t6\n" + "$t7\n" + "$other"
                     )
-                    .setCancelable(true)
+                    .setCancelable(false)
                     .setNegativeButton(
                         "확인"
                     ) { dialog, id -> dialog.cancel() }
@@ -273,7 +274,7 @@ class SeasonActivity : AppCompatActivity() {
 
                             })
 
-                        service?.getModel_special(APP_KEY, "1", latitude, longitude)
+                        service?.getModel_special(SPECIAL_APP_KEY, "1", latitude, longitude)
                             ?.enqueue(object : Callback<Model_weather?> {
                                 override fun onResponse(
                                     call: Call<Model_weather?>,
@@ -294,9 +295,15 @@ class SeasonActivity : AppCompatActivity() {
                                         other = modelItem.weather?.alert?.get(0)?.alert60?.other
 
                                         tv_severe_result.text = varName
+                                        tv_severe_result.setTextColor(resources.getColor(
+                                            R.color.red
+                                        ))
 
                                     } else {
                                         tv_severe_result.text = "없음"
+                                        tv_severe_result.setTextColor(resources.getColor(
+                                            R.color.purple
+                                        ))
                                     }
                                 }
 
@@ -359,7 +366,8 @@ class SeasonActivity : AppCompatActivity() {
     private fun realmInsert() {
         insertModel(
             "벵에돔", "최대60cm", "", "어두운 흑갈색", "2월~6월", "암초 또는 자갈이 많은 연안의 해초가 무성한 곳"
-            , "우리나라의 동해와 남해, 제주도 연안 해역, 일본 중부 이남, 동중국해, 타이완 근해", R.drawable.item_bangedom,
+            , "우리나라의 동해와 남해, 제주도 연안 해역, 일본 중부 이남, 동중국해, 타이완 근해",
+            R.drawable.item_bangedom,
             "몸이 검다고 하여 전남에서는 깜정이, 깜정고기, 경남에서는 흑돔 제주도에서는 구릿이라고 불린다. 오팔 같은 푸른 눈을 가지고 있다 하여 미국에서는 'opaleye'라고 불리며, 일본에서는 눈이 머리 앞쪽에 위치한다는 뜻, 또는 어릴 때 떼지어 노는 모습을 상징하는 뜻의 메지나(メジナ)라고 불리며 몸이 검은색이기 때문에 '구로다이(クロダイ, 검은색의 돔)'이라고 불리기도 하는데 일본어로 감성돔을 '구로다이'라고 부르기 때문에 혼돈되기도 한다.\n" +
                     "\n" +
                     "몸길이는 50~60cm까지 자란다. 몸은 타원형으로 납작하며, 주둥이는 짧고 그 앞 끝은 둔하다. 이빨 끝이 세 갈래로 갈라져 있어서 갯바위에 붙어 있는 해조류를 긁어 먹기에 적합하다. 몸은 전체적으로 매우 어두운 흑갈색을 띠며 배 부분은 약간 밝다. 몸은 빗모양의 비교적 큰 비늘로 덮여 있으며, 각 비늘에는 검은 점이 있다. 지느러미는 검은색이고, 꼬리지느러미의 뒷윤곽은 어릴 때는 거의 직선이지만, 자라면서 안쪽으로 약간 오목하게 들어간다.\n" +
@@ -372,7 +380,8 @@ class SeasonActivity : AppCompatActivity() {
         insertModel(
             "벤자리", "최대40cm", "", "겨울에는 등쪽 희흑색이며 배족은 연한 빛, 봄과 여름에는 녹색을 띤 연한 갈색 바탕에 3줄의 폭이 넓은 황갈색 세로줄"
             , "6월~8월", "연안의 깊은 곳이나 해조류가 많은 곳"
-            , "타이완, 동중국해, 일본 남부, 한국 연근해", R.drawable.item_benjari,
+            , "타이완, 동중국해, 일본 남부, 한국 연근해",
+            R.drawable.item_benjari,
             "영명인 'Grunt'는 무리를 짓거나, 잡으면 민어과 물고기처럼 부레로 구-구-소리를 낸다 하여 붙여진 이름이다. 부산을 중심으로 한 남해동부지방에서는 일본명을 따라 '이사끼'라고 부르기도 한다. 크기에 따라 45㎝급이면 '돗벤자리', 30㎝ 이하는 '아롱이'라 따로 부르기도 한다.\n" +
                     "\n" +
                     "몸은 가늘고 긴 타원형으로 옆으로 납작하다. 주둥이는 짧은 편이며 입은 작고 입술은 얇다. 아래턱은 머리의 윗부분에 위치하고 경사져 있으며, 양 턱에는 비교적 작은 이빨이 3∼4줄 나 있다. 주둥이를 제외한 몸과 머리는 작은 사각형의 빗비늘로 덮여 있다. 몸빛깔은 크기와 계절에 따라서 그 빛깔과 반문의 형태가 달라 겨울에는 아무런 띠도 없으며, 봄과 여름에는 3줄의 폭이 넓은 황갈색 세로줄이 있으나 성장함에 따라 없어진다.\n" +
@@ -385,7 +394,8 @@ class SeasonActivity : AppCompatActivity() {
         insertModel(
             "보구치", "약 30cm", "", "등쪽 연한 갈색, 측선을 경계로 밝아져 배쪽 은백색"
             , "5월~8월", "수심 40~100m의 바닥이 모래나 뻘로 된 근해"
-            , "일본 남부, 동중국해, 타이완, 한국 연안", R.drawable.item_boguchi,
+            , "일본 남부, 동중국해, 타이완, 한국 연안",
+            R.drawable.item_boguchi,
             "부산에서는 백조기, 전남에서는 흰조기, 법성포에서는 보거치라 불린다.\n" +
                     "\n" +
                     "몸길이 약 30cm이다. 몸은 옆으로 납작하고 짧으며 몸높이가 비교적 높다. 등쪽은 연한 갈색이고 측선을 경계로 밝아져 배쪽으로는 은백색을 띤다. 아가미뚜껑 위쪽에는 눈만한 크기의 검은 색 반점이 있다. 등지느러미에는 가시가 있다. 옆줄은 몸의 등쪽으로 치우쳐 있으며 꼬리지느러미까지 완만한 곡선을 그리며 뻗는다.\n" +
@@ -401,7 +411,8 @@ class SeasonActivity : AppCompatActivity() {
         insertModel(
             "볼락", "최대35cm", "0.8kg", "회갈색, 몸 옆구리 불분명한 검은색 가로무늬가 5~6줄(한국)"
             , "1월~2월", "암초로 된 연안"
-            , "한국, 일본 등 북서태평양의 아열대 해역", R.drawable.item_bolack,
+            , "한국, 일본 등 북서태평양의 아열대 해역",
+            R.drawable.item_bolack,
             "《자산어보》에는 발락어(發落魚)로 기재되어 있다. 경남과 전남에서는 뽈라구, 경북에서는 꺽저구, 강원도에서는 열갱이, 함경남도에서는 구럭으로 불린다.\n" +
                     "\n" +
                     "최대 몸길이 35cm, 몸무게 0.8kg까지 성장한다. 몸은 방추형이고 옆으로 납작하다. 눈은 크고, 눈 앞쪽 아래에는 날카로운 가시가 2개 있다. 주둥이는 원뿔형으로 끝이 뾰족하며, 입은 크지만 이빨은 작고 여러 개가 촘촘히 나 있다. 몸빛깔은 서식 장소와 깊이에 따라 다양하여, 얕은 곳에 사는 것은 회갈색을 띠며, 깊은 곳에 사는 것은 회적색, 암초지대의 그늘에 숨어 사는 큰 볼락은 검은빛을 띠어 ‘돌볼락’이라고 불리기도 한다. 우리나라 주변 해역에는 회갈색인 것이 가장 많다. 몸 옆구리에는 불분명한 검은색 가로무늬가 5∼6줄로 희미하게 나 있으며, 죽으면 없어진다. 동해에서 주로 발견되는 탁자볼락과 매우 비슷하게 생겼으며, 아래턱에 비늘이 있으면 볼락, 없으면 탁자볼락이다.\n" +
@@ -414,7 +425,8 @@ class SeasonActivity : AppCompatActivity() {
         insertModel(
             "보리멸", "최대 30cm", "", "등쪽 푸른빛의 연한 갈색, 배쪽 은백색"
             , "6∼8월", "연안 가까이의 모래 바닥이나 강 하구의 간석지"
-            , "서부태평양, 인도양, 지중해 등 열대 해역", R.drawable.item_borimyul,
+            , "서부태평양, 인도양, 지중해 등 열대 해역",
+            R.drawable.item_borimyul,
             "마산에서는 모래바닥에 사는 망둑어라는 뜻의 모래문저리라 불리며, 전남에서는 모래무찌, 경남에서는 모래무치, 밀찡이, 밀징이, 경북에서는 보리메레치, 울산에서는 갈송어, 제주에서는 모살치, 고졸맹이라고 불린다.\n" +
                     "\n" +
                     "최대 몸길이 30cm까지 성장한다. 몸높이는 낮고, 몸은 원통형으로 가늘고 길며 옆으로 납작하다. 입은 튀어나와 있으며 주둥이가 매우 길다. 모래를 더듬어 먹이를 빨아먹는 습성에 맞게 위턱이 아래턱보다 약간 길다. 옆줄은 몸 옆면 가운데보다 약간 위를 지나며, 옆줄을 경계로 몸 등쪽은 푸른빛의 연한 갈색을 띠고, 배쪽은 은백색을 띤다. 몸은 가시가 있는 비교적 큰 빗모양의 비늘로 덮여 있으며, 눈의 아래쪽에 매우 큰 비늘이 6개 있다. 뺨에는 가시가 없는 작은 둥근 비늘이 있다.  \n" +
@@ -449,7 +461,8 @@ class SeasonActivity : AppCompatActivity() {
         insertModel(
             "참돔", "최대 몸길이 100cm 이상", "", "몸 등쪽은 붉은색, 배쪽은 노란색 또는 흰색"
             , "4∼6월", "수심 10∼200m의 바닥 기복이 심한 암초 지역"
-            , "동남아시아, 타이완, 남중국해, 일본, 한국 연근해 등 북서태평양의 아열대 해역", R.drawable.item_chamdom,
+            , "동남아시아, 타이완, 남중국해, 일본, 한국 연근해 등 북서태평양의 아열대 해역",
+            R.drawable.item_chamdom,
             "색채가 아름답고, 모양새가 잘 짜여져 있다고 하여 '참(眞)' 자를 붙여 예로부터 참돔, 참도미, 진도미어(眞道味魚)로 불렸다.\n" +
                     "\n" +
                     "《자산어보》에는 강항어(强項魚)로 기록되어 형태, 특성, 잡는 방법 등에 관해 서술되어 있고, 《전어지》에는 독미어(禿尾魚), 조선시대 《경상도지리지》에는 도음어(都音魚)로 기록되어 있다. 지방과 성장 단계에 따라서도 다른 이름을 가지고 있어서, 강원도에서는 도미(道尾, 道味),돔, 돗도미라 하고, 어린 참돔을 전남에서는 상사리, 제주도에서는 배들래기, 경남에서는 고다이라고 부른다. 또한 경남에서는 일본어로 붉은 돔이라는 뜻의 아까다이라고 부르기도 한다.\n" +

@@ -1,8 +1,10 @@
-package com.ex2i.fisherman
+package com.ex2i.fisherman.Activity
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.ex2i.fisherman.Model
+import com.ex2i.fisherman.R
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.where
