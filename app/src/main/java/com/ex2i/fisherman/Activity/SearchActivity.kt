@@ -2,6 +2,8 @@ package com.ex2i.fisherman.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -96,7 +98,6 @@ class SearchActivity : AppCompatActivity() {
                 intent.putExtra("name", selectedItem)
                 intent.putExtra("image", image)
                 startActivity(intent)
-                finish()
             }
 
         autoCompleteTextView.setOnClickListener {
@@ -111,6 +112,14 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
+        autoCompleteTextView.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(p0: View?, p1: Int, p2: KeyEvent?): Boolean {
+                if(p1 == KEYCODE_ENTER){
+                    return true
+                }
+                return false
+            }
+        })
     }
 
     override fun onPause() {
